@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jueguinho</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Bienvenido a jueguinho</h1>
+    <p>Este es un juego 1v1 donde puedes desafiar a tus amigos.</p>
+    <p> <b>REGLAS: </b> Cada vez que das click en el boton "atacar", se restará entre 10, 20, 40 puntos de vida segun tu
+        suerte :D.</p>
+
+    <div id="attack-message" class="attack-message"></div>
+
+
+    <div class="game-area">
+
+        <div class="player">
+            <h2>Jugador 1</h2>
+            <p id="player-1-health">Vida: 100</p>
+            <button id="player-1-attack-button">Atacar</button>
+
+            <div class="player-image">
+                <img src="player1.jpg" alt="">
+            </div>
+
+        </div>
+
+        <div class="player">
+            <h2>Jugador 2</h2>
+            <p id="player-2-health">Vida: 100</p>
+            <button id="player-2-attack-button">Atacar</button>
+
+            <div class="player-image">
+                <img src="player2.jpg" alt="">
+            </div>
+        </div>
+
+
+    </div>
+
+    <div style="margin-top:20px;">
+        <button id="btn-restart">Reiniciar Juego</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

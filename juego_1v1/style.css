@@ -1,0 +1,60 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  color: #333;
+}
+
+.game-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.player {
+  background: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  width: 45%;
+  text-align: center;
+}
+
+.player-image img {
+  max-width: 100%;
+  height: 500px;
+}
+
+.attack-result {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Nuevos estilos para tipos de daño */
+.weak {
+  color: #4a90e2;
+}
+.normal {
+  color: #ff9800;
+}
+.critical {
+  color: #e53935;
+  font-weight: 700;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Mensaje central */
+.attack-message {
+  margin: 15px auto 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  min-height: 1.4em;
+}
