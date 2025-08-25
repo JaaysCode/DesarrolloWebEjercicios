@@ -1,0 +1,92 @@
+.app-container, h1, p, .attack-message, .player, .player h2, .player p {
+  text-align: center;
+}
+
+.game-area {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.player {
+  background: #fff;
+  border: 1px solid #bbb;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 32px 24px 24px 24px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin: 0 auto;
+  transition: box-shadow 0.2s;
+}
+.player:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.player h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.player p {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+.player-image img {
+  max-width: 100%;
+  height: 320px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+.attack-result {
+  margin-top: 10px;
+  font-weight: bold;
+}
+.weak {
+  color: #4a90e2;
+}
+.normal {
+  color: #ff9800;
+}
+.critical {
+  color: #e53935;
+  font-weight: 700;
+}
+button {
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #aaa;
+}
+.attack-message {
+  margin: 15px auto 25px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  min-height: 1.4em;
+  max-width: 700px;
+  text-align: center;
+}
+@media (max-width: 1100px) {
+  .game-area {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .player {
+    max-width: 90vw;
+  }
+}

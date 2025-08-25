@@ -1,0 +1,28 @@
+<h1>Bienvenido a jueguinho</h1>
+<p>Este es un juego 1v1 donde puedes desafiar a tus amigos.</p>
+<p> <b>REGLAS: </b> Cada vez que das click en el boton "atacar", se restará entre 10, 20, 40 puntos de vida segun tu
+  suerte :D.</p>
+<div id="attack-message" class="attack-message" [innerHTML]="attackMessage"></div>
+<div class="game-area">
+  <div class="player">
+    <h2>Jugador 1</h2>
+    <p id="player-1-health">Vida: {{ players.player_1.health }}</p>
+    <button id="player-1-attack-button" (click)="attackPlayer('player_1', 'player_2')"
+      [disabled]="currentTurn !== 'player_1' || players.player_1.health <= 0 || players.player_2.health <= 0">Atacar</button>
+    <div class="player-image">
+      <img src="public/player1.jpg" alt="Jugador 1">
+    </div>
+  </div>
+  <div class="player">
+    <h2>Jugador 2</h2>
+    <p id="player-2-health">Vida: {{ players.player_2.health }}</p>
+    <button id="player-2-attack-button" (click)="attackPlayer('player_2', 'player_1')"
+      [disabled]="currentTurn !== 'player_2' || players.player_1.health <= 0 || players.player_2.health <= 0">Atacar</button>
+    <div class="player-image">
+      <img src="public/player2.jpg" alt="Jugador 2">
+    </div>
+  </div>
+</div>
+<div style="margin-top:20px; display: flex; justify-content: center;">
+  <button id="btn-restart" (click)="restartGame()">Reiniciar Juego</button>
+</div>
