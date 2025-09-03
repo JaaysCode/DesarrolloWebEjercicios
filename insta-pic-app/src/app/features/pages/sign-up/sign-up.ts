@@ -37,6 +37,7 @@ export class SignUp {
     }
 
     localStorage.setItem(user.username!, JSON.stringify(user));
+    localStorage.setItem('lastUser', user.username!); 
     alert('Registro exitoso');
     this.router.navigate(['/home']);
   }

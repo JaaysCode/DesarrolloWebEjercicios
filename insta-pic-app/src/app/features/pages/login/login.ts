@@ -35,6 +35,7 @@ export class Login {
       const isValidPassword = inputPassword === credentials.password;
       if (isValidPassword) {
         alert('Inicio de sesión exitoso');
+        localStorage.setItem('lastUser', inputUsername!); 
         this.router.navigate(['/home']);
       } else {
         alert('Las credenciales son incorrectas mi papá');
