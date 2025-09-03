@@ -1,0 +1,55 @@
+.user-icon {
+  width: 150px;
+}
+
+.profile {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+}
+
+.profile label {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.flotante {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid black;
+  border-radius: 15px;
+  margin: 20px;
+  padding: 25px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.metrics {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 50px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.metric-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.metric-data div {
+  font-size: 40px;
+  font-weight: bold;
+  color: #0c8599;
+}
+
+.metric-data span {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 5px;
+}

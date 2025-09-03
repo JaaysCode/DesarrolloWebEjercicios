@@ -1,0 +1,21 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #003049;
+  padding: 35px;
+  color: white;
+  margin-top: auto;
+}
+
+.footer i {
+  font-size: 2rem;
+  color: white;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.footer i:hover {
+  color: #0c8599;
+  transform: scale(1.2);
+}
