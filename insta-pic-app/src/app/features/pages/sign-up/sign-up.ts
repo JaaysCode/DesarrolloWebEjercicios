@@ -1,6 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { User } from '../../../shared/interfaces/user';
+import { Auth } from '../../../shared/services/auth';
+import { passwordMatchValidator } from '../../../shared/validators/password-match.validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,34 +13,45 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class SignUp {
   fb = inject(FormBuilder);
+
   router = inject(Router);
+
+  authService = inject(Auth);
+
+  ruta = '';
 
   title = 'Registro de usuario';
 
   validators = [Validators.required, Validators.minLength(4)];
 
-  signUpForm = this.fb.group({
-    username: ['jjzapata', [Validators.required]],
-    email: ['', [Validators.required]],
-    password: ['', this.validators],
-    rePassword: ['', this.validators],
-  });
+  signUpForm = this.fb.group(
+    {
+      username: ['jjzapata', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', this.validators],
+      rePassword: ['', this.validators],
+    },
+    { validators: passwordMatchValidator }
+  );
 
   onSignUp() {
     if (!this.signUpForm.valid) {
+      if (this.signUpForm.errors?.['passwordMismatch']) {
+        alert('Las contraseñas no coinciden');
+        return;
+      }
       alert('Faltan campos por diligenciar');
       return;
     }
-    let user = this.signUpForm.value;
-    console.log(user);
+    let user = this.signUpForm.value as User;
 
-    if (localStorage.getItem(user.username!)) {
-      alert('Usuario ya existe');
+    let signUpResponse = this.authService.signUp(user);
+
+    if (!!signUpResponse.success) {
+      this.router.navigate([signUpResponse.redirectTo]);
       return;
     }
 
-    localStorage.setItem(user.username!, JSON.stringify(user));
-    alert('Registro exitoso');
-    this.router.navigate(['/home']);
+    alert(signUpResponse.message);
   }
 }

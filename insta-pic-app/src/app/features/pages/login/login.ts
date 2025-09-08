@@ -1,6 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
+import { User } from '../../../shared/interfaces/user';
+import { Auth } from '../../../shared/services/auth';
 
 @Component({
   selector: 'app-login',
@@ -9,36 +12,40 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './login.css',
 })
 export class Login {
-  formBuilder = inject(FormBuilder);
+  fb = inject(FormBuilder);
+
   router = inject(Router);
 
-  LogInForm = this.formBuilder.group({
-    username: ['', [Validators.required, Validators.minLength(2)]],
-    password: ['', [Validators.required, Validators.minLength(2)]],
+  authService = inject(Auth);
+
+  ruta = '';
+
+  title = 'Registro de usuario';
+
+  validators = [Validators.required, Validators.minLength(4)];
+
+  loginForm = this.fb.group({
+    username: ['jjzapata', [Validators.required]],
+    password: ['', this.validators],
   });
 
   onLogin() {
-    const { username: inputUsername, password: inputPassword } = this.LogInForm.value;
-
-    if (!this.LogInForm.valid) {
-      alert('Faltan campos por diligenciar mi papacho');
+    if (!this.loginForm.valid) {
+      Swal.fire('Faltan campos por diligenciar');
       return;
     }
-    const credentialsString = localStorage.getItem(inputUsername!);
-    if (!credentialsString) {
-      alert('Usuario no encontrado');
+
+    let user = this.loginForm.value as User;
+    let loginResponse = this.authService.login(user);
+    if (!!loginResponse.success) {
+      Swal.fire('Ingreso exitoso');
+      this.router.navigate([loginResponse.redirectTo]);
       return;
     }
-    if (credentialsString) {
-      const credentials = JSON.parse(credentialsString);
-
-      const isValidPassword = inputPassword === credentials.password;
-      if (isValidPassword) {
-        alert('Inicio de sesión exitoso');
-        this.router.navigate(['/home']);
-      } else {
-        alert('Las credenciales son incorrectas mi papá');
-      }
-    }
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Ingreso fallido!',
+    });
   }
 }
