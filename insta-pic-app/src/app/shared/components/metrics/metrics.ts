@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './metrics.css'
 })
 export class Metrics {
+  username: string = '';
 
+  constructor() {
+    const lastUser = localStorage.getItem('lastUser');
+    this.username = lastUser ? lastUser : 'Usuario';
+  }
 }
