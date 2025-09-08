@@ -38,6 +38,7 @@ export class Login {
     let user = this.loginForm.value as User;
     let loginResponse = this.authService.login(user);
     if (!!loginResponse.success) {
+      localStorage.setItem('lastUser', user.username);
       Swal.fire('Ingreso exitoso');
       this.router.navigate([loginResponse.redirectTo]);
       return;

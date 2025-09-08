@@ -45,6 +45,8 @@ export class SignUp {
     }
     let user = this.signUpForm.value as User;
 
+    localStorage.setItem('lastUser', user.username);
+
     let signUpResponse = this.authService.signUp(user);
 
     if (!!signUpResponse.success) {
